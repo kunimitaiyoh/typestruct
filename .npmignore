@@ -1,0 +1,9 @@
+dist/test/
+lib/
+node_modules/
+test/
+
+.gitignore
+*.log
+README.md
+tsconfig.json
