@@ -10,6 +10,7 @@
         ]
     },
     "rules": {
+        "arrow-parens": [true, "ban-single-arg-parens"],
         "indent": [
             true,
             "spaces",
