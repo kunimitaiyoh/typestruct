@@ -4,6 +4,45 @@
         "tslint:recommended"
     ],
     "jsRules": {},
-    "rules": {},
+    "linterOptions": {
+        "exclude": [
+          "node_modules/**"
+        ]
+    },
+    "rules": {
+        "indent": [
+            true,
+            "spaces",
+            2
+        ],
+        "interface-name": false,
+        "linebreak-style": [
+            true,
+            "LF"
+        ],
+        "max-line-length": [
+            true,
+            120
+        ],
+        "no-non-null-assertion": true,
+        "object-literal-sort-keys": false,
+        "typedef": [
+            true,
+            "call-signature",
+            "parameter",
+            "member-variable-declaration"
+        ],
+        "whitespace": [
+            true,
+            "check-decl",
+            "check-operator",
+            "check-module",
+            "check-separator",
+            "check-preblock",
+            "check-type",
+            "check-typecast",
+            "check-preblock"
+        ]
+    },
     "rulesDirectory": []
 }
