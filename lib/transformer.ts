@@ -1,6 +1,7 @@
 import * as path from "path";
 import * as ts from "typescript";
 import { Node, Program, SourceFile, TransformationContext, TransformerFactory, visitEachChild } from "typescript";
+import { literal } from "./decoders";
 
 const index = path.join(__dirname, "index.ts");
 const FUNCTION_NAME = "generateDecoder";
@@ -54,5 +55,31 @@ function isDecoderGeneration(node: ts.Node, typeChecker: ts.TypeChecker): node i
 }
 
 function buildDecoder(type: ts.Type, typeChecker: ts.TypeChecker): ts.CallExpression {
-  throw new Error("not implemented!");
+  if (type.isClassOrInterface()) {
+    const properties = typeChecker.getPropertiesOfType(type);
+    throw new Error("not implemented!");
+  }
+  if (type.getNumberIndexType() !== undefined) {
+    const properties = typeChecker.getPropertiesOfType(type);
+    throw new Error("not implemented!");
+  }
+  if (type.getStringIndexType() !== undefined) {
+    throw new Error("not implemented!");
+  }
+
+  const literal = resolveLiteralDecoder(type);
+  if (literal !== null)
+    return literal
+  else
+    throw new Error("invalid type!");
+}
+
+function resolveLiteralDecoder(type: ts.Type): ts.CallExpression | null {
+  if (type.isStringLiteral)
+    return literal("string");
+  if (type.isNumberLiteral)
+    return literal("number");
+  if (type.getSymbol()!.name === "boolean")
+    return literal("boolean");
+  return null;
 }
