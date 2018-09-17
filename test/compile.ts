@@ -10,6 +10,7 @@ function compile(files: string[]): void {
     noEmitOnError: true,
     target: ts.ScriptTarget.ES5,
     module: ts.ModuleKind.CommonJS,
+    sourceMap: true,
   });
   const transformers: ts.CustomTransformers = {
     before: [transformer(program)],
