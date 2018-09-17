@@ -2,7 +2,7 @@ import * as path from "path";
 import * as ts from "typescript";
 import transformer from "../lib/transformer";
 
-compile([path.join(__dirname, "./transformer.spec.ts")]);
+compile([path.join(__dirname, "../../test/transformer.spec.ts")]);
 
 function compile(files: string[]): void {
   const program = ts.createProgram(files, {

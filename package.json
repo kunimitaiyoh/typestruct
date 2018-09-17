@@ -11,7 +11,10 @@
   "scripts": {
     "build:develop": "tsc",
     "lint": "tslint 'lib/**/*.ts'",
-    "test": "ts-node test/compile.ts"
+    "tsc": "rimraf ./dist && tsc",
+    "compile:test": "node dist/compiler/compile.js",
+    "test": "npm run tsc && npm run compile:test && npm run test:execute",
+    "test:execute": "mocha dist/test/**/*.ts"
   },
   "keywords": [
     "typescript"
@@ -22,7 +25,7 @@
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.9.4",
     "mocha": "^5.2.0",
-    "ts-node": "^7.0.1",
+    "rimraf": "^2.6.2",
     "tslint": "^5.11.0",
     "typescript": "^3.0.3"
   },
